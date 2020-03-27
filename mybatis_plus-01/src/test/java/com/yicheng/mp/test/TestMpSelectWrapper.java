@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
-public class TestMpSelect {
+public class TestMpSelectWrapper {
 
     private ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     private EmployeeMapper mapper = context.getBean("employeeMapper", EmployeeMapper.class);
@@ -37,6 +37,17 @@ public class TestMpSelect {
                 .like("last_name", "老师")
                 .or()
                 .like("email", "a");
+        List<Employee> employees = mapper.selectList(wrapperList);
+        System.out.println(employees);
+    }
+
+    // 查询性别为女的，根据age进行排序（asc/desc），简单分页
+    // orderBy()默认是正序，倒序可以用orderByDesc()
+    // 也可以用last()在sql语句最后面加上desc  注意有sql注入风险
+    @Test
+    public void testSelectPage() {
+        Wrapper<Employee> wrapperList = new EntityWrapper<>();
+        wrapperList.eq("gender", 0).orderBy("age").last("desc");
         List<Employee> employees = mapper.selectList(wrapperList);
         System.out.println(employees);
     }
