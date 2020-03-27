@@ -1,4 +1,4 @@
-package com.yicheng.mp.test;
+package com.yicheng.mp.testMP;
 
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.yicheng.mp.bean.Employee;

@@ -1,4 +1,4 @@
-package com.yicheng.mp.test;
+package com.yicheng.mp.testMP;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -8,19 +8,18 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class TestMpUpdate {
+public class TestMpDelete {
 
     private ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     private EmployeeMapper mapper = context.getBean("employeeMapper", EmployeeMapper.class);
 
-    // 修改名字为Test并且年龄为35的信息
+    // 删除名字为Test并且age为32的用户
     @Test
-    public void testMpUpdateWrapper() {
-        Employee employee = new Employee();
-        employee.setEmail("test@qq.com");
-        Wrapper<Employee> wrapperList = new EntityWrapper<>();
-        wrapperList.eq("last_name", "Test").eq("age", 35);
-        Integer flag = mapper.update(employee, wrapperList);
+    public void testMpDeleteWrapper() {
+        Wrapper<Employee> wrapperList = new EntityWrapper<Employee>();
+        wrapperList.eq("last_name", "Test").eq("age", 32);
+        Integer flag = mapper.delete(wrapperList);
         System.out.println(flag);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.yicheng.mp.test;
+package com.yicheng.mp.testMP;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.yicheng.mp.bean.Employee;
@@ -35,7 +35,7 @@ public class TestMP {
 //        System.out.println("通过Map删除多个结果如下：" + flag2);
 
 //        通过id集合删除多条数据
-        List<Integer> idList = new ArrayList<>();
+        List<Integer> idList = new ArrayList<Integer>();
         idList.add(5);
         idList.add(6);
         idList.add(7);
@@ -81,7 +81,7 @@ public class TestMP {
 
 //        分页查询
 //        但是一般不会用这种查询，因为它的sql语句中没有limit，所以我们还是会选择一些分页插件
-        List<Employee> employees3 = mapper.selectPage(new Page<>(2, 2), null);
+        List<Employee> employees3 = mapper.selectPage(new Page<Employee>(2, 2), null);
         System.out.println("分页查询结果如下：" + employees3);
     }
 

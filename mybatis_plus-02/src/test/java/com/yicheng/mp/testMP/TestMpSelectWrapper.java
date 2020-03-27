@@ -1,4 +1,4 @@
-package com.yicheng.mp.test;
+package com.yicheng.mp.testMP;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -19,11 +19,11 @@ public class TestMpSelectWrapper {
     // 条件构造器：查询年龄20-40，名字中有Test的男性，并分页查询显示第2页
     @Test
     public void testSelectWrapper() {
-        Wrapper<Employee> wrapperList = new EntityWrapper<>();
+        Wrapper<Employee> wrapperList = new EntityWrapper<Employee>();
         wrapperList.between("age", 20, 40)
                 .eq("gender", 1)
                 .eq("last_name", "Test");
-        List<Employee> employees = mapper.selectPage(new Page<>(2, 2), wrapperList);
+        List<Employee> employees = mapper.selectPage(new Page<Employee>(2, 2), wrapperList);
         System.out.println(employees);
     }
 
@@ -32,7 +32,7 @@ public class TestMpSelectWrapper {
     // .orNew() => (gender = ? and last_name like ?) or (email like ?)
     @Test
     public void testSelectList() {
-        Wrapper<Employee> wrapperList = new EntityWrapper<>();
+        Wrapper<Employee> wrapperList = new EntityWrapper<Employee>();
         wrapperList.eq("gender", 0)
                 .like("last_name", "老师")
                 .or()
@@ -46,7 +46,7 @@ public class TestMpSelectWrapper {
     // 也可以用last()在sql语句最后面加上desc  注意有sql注入风险
     @Test
     public void testSelectPage() {
-        Wrapper<Employee> wrapperList = new EntityWrapper<>();
+        Wrapper<Employee> wrapperList = new EntityWrapper<Employee>();
         wrapperList.eq("gender", 0).orderBy("age").last("desc");
         List<Employee> employees = mapper.selectList(wrapperList);
         System.out.println(employees);
