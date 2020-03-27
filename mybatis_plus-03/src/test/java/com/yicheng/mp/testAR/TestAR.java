@@ -1,7 +1,6 @@
 package com.yicheng.mp.testAR;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.yicheng.mp.bean.Employee;
 import org.junit.Test;
