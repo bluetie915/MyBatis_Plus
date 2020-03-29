@@ -73,6 +73,15 @@
         <!-- 全局的表前缀策略配置 -->
         <property name="tablePrefix" value="tbl_"></property>
 
+        <!-- 注入自定义全局操作 -->
+        <!--<property name="sqlInjector" ref="mySqlInjector"></property>-->
+
+        <!-- 注入逻辑删除 -->
+        <property name="sqlInjector" ref="logicSqlInjector"></property>
+
+        <!-- 注入逻辑删除全局值 -->
+        <property name="logicDeleteValue" value="-1"></property>
+        <property name="logicNotDeleteValue" value="1"></property>
     </bean>
 
     <!--
@@ -82,4 +91,9 @@
         <property name="basePackage" value="com.yicheng.mp.mapper"></property>
     </bean>
 
+    <!-- 逻辑删除 -->
+    <bean id="logicSqlInjector" class="com.baomidou.mybatisplus.mapper.LogicSqlInjector"></bean>
+
+    <!-- 定义自定义注入器 -->
+    <bean id="mySqlInjector" class="com.yicheng.mp.injector.MySqlInjector"></bean>
 </beans>
