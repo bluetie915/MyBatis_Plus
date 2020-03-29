@@ -18,5 +18,6 @@
     <sql id="Base_Column_List">
         id, last_name, email, gender, age
     </sql>
+    <delete id="deleteAll"></delete>
 
 </mapper>

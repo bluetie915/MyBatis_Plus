@@ -1,10 +1,14 @@
 package com.yicheng.mp.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableLogic;
+import com.baomidou.mybatisplus.enums.FieldFill;
 
 public class User {
 
     private Integer id;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String name;
 
     @TableLogic // 逻辑删除属性

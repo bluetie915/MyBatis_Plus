@@ -82,6 +82,9 @@
         <!-- 注入逻辑删除全局值 -->
         <property name="logicDeleteValue" value="-1"></property>
         <property name="logicNotDeleteValue" value="1"></property>
+
+        <!-- 注入公共字段填充处理器 -->
+        <property name="metaObjectHandler" ref="myMetaObjectHandler"></property>
     </bean>
 
     <!--
@@ -96,4 +99,7 @@
 
     <!-- 定义自定义注入器 -->
     <bean id="mySqlInjector" class="com.yicheng.mp.injector.MySqlInjector"></bean>
+
+    <!-- 公共字段填充处理器 -->
+    <bean id="myMetaObjectHandler" class="com.yicheng.mp.metaObjectHandler.MyMetaObjectHandler"></bean>
 </beans>
